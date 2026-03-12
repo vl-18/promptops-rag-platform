@@ -1,0 +1,8 @@
+Employees can claim travel expenses for official business trips.
+
+Flight tickets, hotel stays, and local transport are reimbursable.
+
+Gym memberships are not reimbursable unless approved under
+the company wellness program.
+
+Employees must submit expense reports within 30 days of travel.

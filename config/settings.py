@@ -19,7 +19,9 @@ class Settings:
     # Data path (UPDATED)
     DATA_PATH = "data"
 
+    DEMO_MODE = True
+
     # API keys
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    # OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 settings = Settings()

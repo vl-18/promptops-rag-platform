@@ -1,5 +1,6 @@
 import faiss
 from config.settings import settings
+import numpy as np
 
 
 class Retriever:

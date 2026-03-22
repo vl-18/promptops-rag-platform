@@ -3,6 +3,7 @@ import streamlit as st
 from rag.ingestion import DocumentIngestor
 from rag.embeddings import EmbeddingModel
 from rag.retriever import Retriever
+from evaluation.evaluator import Evaluator
 
 from prompts.registry import get_prompt_framework, list_prompt_frameworks
 from llm.client import LLMClient
@@ -60,13 +61,37 @@ if st.button("Ask"):
         # ---- LLM CALL ----
 
         llm = LLMClient()
+        evaluator = Evaluator(llm)
 
-        response = llm.generate(prompt)
+        result = llm.generate(prompt)
+
+        response = result["response"]
+        tokens = result["tokens"]
+        latency = result["latency"]
+
+        metrics = evaluator.evaluate_all(
+        query=query,
+        context=context,
+        response=response,
+        latency=latency,
+        tokens=tokens
+)
 
         # ---- DISPLAY RESPONSE ----
 
         st.subheader("Answer")
         st.write(response)
+
+        st.subheader("Metrics")
+
+        st.write(f"Relevance: {metrics['relevance']}")
+        st.write(f"Faithfulness: {metrics['faithfulness']}")
+        st.write(f"Latency: {round(metrics['latency'], 2)} sec")
+        st.write(f"Tokens: {metrics['tokens']}")
+
+        with st.expander("Evaluation Details"):
+            st.write("Relevance Reason:", metrics["details"]["relevance_reason"])
+            st.write("Faithfulness Reason:", metrics["details"]["faithfulness_reason"])
 
         # ---- DISPLAY SOURCES ----
 

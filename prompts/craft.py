@@ -5,7 +5,7 @@ class CraftPrompt(BasePrompt, framework_name="craft"):
 
     def build_prompt(self, query, context):
 
-        prompt = f"""
+        prompt = f"""### craft framework
 Context:
 {context}
 

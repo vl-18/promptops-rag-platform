@@ -1,8 +1,17 @@
-Employees can claim travel expenses for official business trips.
+Leave Policy:
+Employees are entitled to 20 days of paid leave annually. Unused leave can be carried forward up to a maximum of 10 days. Sick leave does not require prior approval but must be reported within 24 hours.
 
-Flight tickets, hotel stays, and local transport are reimbursable.
+Work From Home Policy:
+Employees can work from home up to 3 days per week with manager approval. Full-time remote work is not permitted unless explicitly approved by HR.
 
-Gym memberships are not reimbursable unless approved under
-the company wellness program.
+Travel Policy:
+All business travel must be approved in advance. Economy class should be booked for domestic travel. Reimbursement claims must be submitted within 7 days of travel completion.
 
-Employees must submit expense reports within 30 days of travel.
+Code of Conduct:
+Employees are expected to maintain professionalism and respect in all workplace interactions. Harassment or discrimination will not be tolerated and may lead to disciplinary action.
+
+Expense Reimbursement Policy:
+Expenses must be work-related and supported by valid receipts. Reimbursement requests should be submitted within 10 days.
+
+Data Security Policy:
+Employees must not share confidential company data externally. All devices must be secured with passwords. Unauthorized access or data breaches must be reported immediately.

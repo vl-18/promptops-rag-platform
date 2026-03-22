@@ -5,7 +5,7 @@ class CrispePrompt(BasePrompt, framework_name="crispe"):
 
     def build_prompt(self, query, context):
 
-        prompt = f"""
+        prompt = f""" ### crispe framework
 Capacity:
 You are an AI assistant specialized in interpreting company policies.
 

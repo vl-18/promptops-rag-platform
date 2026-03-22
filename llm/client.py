@@ -1,5 +1,6 @@
 from openai import OpenAI
 from config.settings import settings
+import time
 
 
 class LLMClient:
@@ -12,16 +13,36 @@ class LLMClient:
         self.model = settings.MODEL_NAME
 
 
-    def generate(self, prompt: str):
+    def generate(self, prompt: str, temperature: float = 0.2):
+
+        start_time = time.time()
 
         # DEMO MODE (no API call)
+        # if settings.DEMO_MODE:
+        #     response_text = (
+        #         "This is a demo response generated without calling the LLM API. "
+        #         "In a real system, the model would generate an answer based on "
+        #         "the retrieved policy context."
+        #     )
+
         if settings.DEMO_MODE:
 
-            return (
-                "This is a demo response generated without calling the LLM API. "
-                "In a real system, the model would generate an answer based on "
-                "the retrieved policy context."
-            )
+            if "craft" in prompt:
+                response_text = ("Structured policy-based response (CRAFT-style)."
+                                 "In a real system, the model would generate an answer based on"
+                                "the retrieved policy context")
+            else:
+                response_text = ("Detailed explanatory response (CRISPE-style)."
+                                "In a real system, the model would generate an answer based on"
+                                "the retrieved policy context")
+
+            latency = time.time() - start_time
+
+            return {
+                "response": response_text,
+                "tokens": 0,
+                "latency": latency
+            }
 
         # REAL MODE
         response = self.client.chat.completions.create(
@@ -29,7 +50,18 @@ class LLMClient:
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.2
+            temperature=temperature
         )
 
-        return response.choices[0].message.content
+        response_text = response.choices[0].message.content
+
+        # Token usage (important!)
+        tokens = response.usage.total_tokens if response.usage else 0
+
+        latency = time.time() - start_time
+
+        return {
+            "response": response_text,
+            "tokens": tokens,
+            "latency": latency
+        }

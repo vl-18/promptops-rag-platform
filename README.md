@@ -1,4 +1,4 @@
-# 🤖 GenAI Policy Coach
+# 🤖 GenAI Policy Coach (PromptOps RAG Platform)
 
 A Retrieval-Augmented Generation (RAG) system designed to answer policy queries with grounded and explainable responses.
 
